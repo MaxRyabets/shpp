@@ -1,0 +1,185 @@
+body {
+    margin: auto;
+    display: grid;
+    grid-template-areas: "header header" "main main" "footer footer";
+    grid-template-columns: 1fr 1fr;
+}
+
+html{
+    min-width: 800px;
+}
+
+h3 {
+    margin: auto;
+}
+/*start header*/
+header {
+    grid-area: header;
+}
+
+.header__nav-logo {
+    font-weight: bold;
+    font-size: 35px;
+    font-family: var(--primary-font-family);
+    float: left;
+    margin-left: 55px;
+}
+
+.header__nav-logo_letter {
+    color: black;
+}
+
+.header__nav-logo_symbol-plus {
+    color: #33c3a7;
+    margin-left: -5px;
+    letter-spacing: 2px;
+}
+
+nav {
+    float: right;
+}
+nav, .wrapper__body {
+    margin-left: 55px;
+    margin-right: 55px;
+}
+ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li {
+    display: inline;
+}
+
+li a {
+    text-align: center;
+    text-decoration: none;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: black;
+    margin-left: 30px;
+}
+
+/*end header*/
+:root {
+    --primary-font-family: 'Roboto', sans-serif;
+}
+
+/*start body*/
+.wrapper {
+    grid-area: main;
+}
+
+.wrapper__header, .wrapper__body, footer {
+    display: grid;
+}
+
+.wrapper__header, footer{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 400px;
+    background-color: #1abc9c;
+    color: white;
+    font-family: var(--primary-font-family);
+}
+
+.wrapper__header__grid-image {
+    grid-column: 1;
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.wrapper__header__grid-text {
+    grid-column: 2;
+    text-align: justify;
+    margin: auto 50px auto auto;
+}
+.wrapper__header__grid-text__p, .wrapper__body, form, .footer__form {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.wrapper__body, footer {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.wrapper__body {
+    text-align: center;
+}
+
+.wrapper__body-left-column {
+    grid-column: 1;
+}
+
+.wrapper__body-center-column {
+    grid-column: 2;
+}
+
+.wrapper__body-right-column {
+    grid-column: 3;
+}
+
+.wrapper__body-circle-icon{
+    height: 65px;
+    width: 65px;
+    background-color: #1abc9c;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 75px;
+}
+
+button {
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    padding: 10px;
+    width: 100px;
+}
+button:hover{
+    background-color: #17bcb6;
+}
+
+/*start font awesome*/
+
+.fa {
+    color: white;
+}
+/*end font awesome*/
+
+/*end body*/
+
+footer {
+    grid-area: footer;
+    background-color: #16a085;
+    grid-template-rows: 500px;
+}
+
+.footer__form {
+    text-align: center;
+    grid-column: 2;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize:none;
+}
+
+#footer__form--send-email {
+    margin-top: 40px;
+    width: 200px;
+}
+
+
+
+

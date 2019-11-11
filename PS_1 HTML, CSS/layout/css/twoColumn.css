@@ -1,0 +1,15 @@
+.left-column {
+    text-align: center;
+    padding: 15px;
+    flex: 2;
+    -webkit-flex: 2;
+    background-color: aquamarine;
+}
+
+.right-column {
+    text-align: center;
+    padding: 15px;
+    flex: 2;
+    -webkit-flex: 2;
+    background-color: aqua;
+}
