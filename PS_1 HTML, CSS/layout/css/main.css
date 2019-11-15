@@ -21,3 +21,44 @@ footer {
     background-color: #3498db;
     flex-shrink: 0;
 }
+
+
+.left-column--three-columns {
+    text-align: center;
+    padding: 15px;
+    flex: 2;
+    -webkit-flex: 2;
+    background-color: aquamarine;
+}
+
+.center-column--three-columns {
+    text-align: center;
+    padding: 15px;
+    flex: 4;
+    -webkit-flex: 4;
+    background-color: antiquewhite;
+}
+
+.right-column--three-columns {
+    text-align: center;
+    padding: 15px;
+    flex: 2;
+    -webkit-flex: 2;
+    background-color: aqua;
+}
+
+.left-column--two-columns {
+    text-align: center;
+    padding: 15px;
+    flex: 2;
+    -webkit-flex: 2;
+    background-color: aquamarine;
+}
+
+.right-column--two-columns {
+    text-align: center;
+    padding: 15px;
+    flex: 2;
+    -webkit-flex: 2;
+    background-color: aqua;
+}

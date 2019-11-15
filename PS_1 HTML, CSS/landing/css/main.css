@@ -7,6 +7,12 @@ body {
 
 html{
     min-width: 800px;
+    max-width: 960px;
+    font-family: var(--primary-font-family);
+
+}
+html, body {
+    margin: 0 auto;
 }
 
 h3 {
@@ -23,6 +29,7 @@ header {
     font-family: var(--primary-font-family);
     float: left;
     margin-left: 55px;
+    margin-top: 5px;
 }
 
 .header__nav-logo_letter {
@@ -70,16 +77,18 @@ li a {
     grid-area: main;
 }
 
+
 .wrapper__header, .wrapper__body, footer {
     display: grid;
 }
+.wrapper__header {
 
+}
 .wrapper__header, footer{
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 400px;
     background-color: #1abc9c;
     color: white;
-    font-family: var(--primary-font-family);
 }
 
 .wrapper__header__grid-image {
@@ -95,8 +104,8 @@ li a {
     margin: auto 50px auto auto;
 }
 .wrapper__header__grid-text__p, .wrapper__body, form, .footer__form {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 .wrapper__body, footer {
     grid-template-columns: repeat(3, 1fr);
@@ -154,7 +163,7 @@ button:hover{
 footer {
     grid-area: footer;
     background-color: #16a085;
-    grid-template-rows: 500px;
+    grid-template-rows: auto;
 }
 
 .footer__form {
@@ -162,7 +171,7 @@ footer {
     grid-column: 2;
 }
 
-input[type=text], textarea {
+input, textarea {
     width: 100%;
     padding: 10px 20px;
     margin: 5px 0;
@@ -170,7 +179,9 @@ input[type=text], textarea {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
+input[type=image] {
+    width: 25%;
+}
 textarea {
     resize:none;
 }
