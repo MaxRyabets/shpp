@@ -65,6 +65,7 @@ li a {
     padding-left: 15px;
     color: black;
     margin-left: 30px;
+    cursor: pointer;
 }
 
 /*end header*/
@@ -113,6 +114,7 @@ li a {
 
 .wrapper__body {
     text-align: center;
+    grid-gap: 30px;
 }
 
 .wrapper__body-left-column {
@@ -179,9 +181,21 @@ input, textarea {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
 input[type=image] {
-    width: 25%;
+    border: none;
+    height: auto;
+    width: auto;
 }
+
+input[type=color] {
+    padding: inherit;
+}
+
+fieldset {
+    border: none;
+}
+
 textarea {
     resize:none;
 }
