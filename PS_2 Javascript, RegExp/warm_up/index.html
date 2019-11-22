@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WD_PS2 Javascript + RegExp</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="index.html" class="was-validated">
+                    <div class="form-row">
+
+                        <div class="col-md-4 mb-3">
+                            <label for="first_number">First number: </label>
+                            <input type="number" class="form-control"
+                                   id="first_number" name="first_number" value="0" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="second_number">Second number: </label>
+                            <input type="number" class="form-control"
+                                   id="second_number" name="second_number" value="100" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="result_sum">Result: </label>
+                            <div id="result_sum" class="alert alert-success" role="alert"></div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-outline-primary" onclick="sum();" id="sum">Primary</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form action="index.html" class="was-validated">
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="seconds">Enter number of the seconds: </label>
+                            <input type="number" class="form-control"
+                                   id="seconds" name="seconds" value="" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="timeToSeconds">Enter time hh:mm:ss </label>
+                            <input type="text" class="form-control"
+                                   id="timeToSeconds" name="fullTime" value="20:13:13" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="result_time">Result: </label>
+                            <div id="result_time" class="alert alert-success" role="alert"></div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-outline-primary" onclick="time();" id="time">Primary</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form action="index.html" class="was-validated">
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="firstDate">Enter first date: </label>
+                            <input type="datetime-local" class="form-control"
+                                   id="firstDate" name="seconds" value="2019-02-01T19:24:23" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="secondDate">Enter second date </label>
+                            <input type="datetime-local" class="form-control"
+                                   id="secondDate" name="fullTime" value="2020-03-01T10:24:23" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="result_date-time">Result: </label>
+                            <div id="result_date-time" class="alert alert-success" role="alert"></div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-outline-primary" onclick="calcDateTime();" id="calcDate">Primary</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form action="index.html" class="was-validated">
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="col">Enter first date: </label>
+                            <input type="number" class="form-control"
+                                   id="col" name="col" value="8" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="row">Enter second date </label>
+                            <input type="number" class="form-control"
+                                   id="row" name="row" value="8" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div>
+                            <label for="result_date-time">Result: </label>
+                            <div id="result_chessboard" role="alert"></div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-outline-primary" onclick="drawChessboard();" id="drawChessboard">Primary</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <form action="index.html" class="was-validated">
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="ipLinks">Enter links or ip: </label>
+                            <textarea class="form-control"
+                                      id="ipLinks" name="ipLinks" rows="5" cols="5" maxlength="100" required>
+                                https://stackoverflow.com/,195.62.15.242,
+                                https://www.evernote.com/shard/s496/client/snv?,
+                                ferferfee rgege ttttt eewewq, 3453rf z/.,/, ,j,kyui, `12wec.er gfreg@mei.rt,
+                                http://195.230.140.114
+                            </textarea>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="result_ipLinks">Result: </label>
+                            <div id="result_ipLinks" class="alert alert-success" role="alert"></div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="btn btn-outline-primary" onclick="findIpLinks();">Primary</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form action="index.html" class="was-validated">
+                    <div class="form-row">
+
+                        <div class="col-md-6 mb-3">
+                            <label for="data-text">Enter text : </label>
+                            <textarea class="form-control"
+                                      id="data-text" name="data-text" rows="5" cols="5" maxlength="100" required>
+                                Distinctio viverra. Omnis culpa pariatur nunc facere proident! Accusamus proin?
+                                Donec maecenas dolores auctor minim. Quisque! Conubia recusandae totam nobis!
+                                Ut dis justo, alias blanditiis ullam mollis, viverra! Parturient, temporibus?
+                                Eius praesent quas rerum mollis eveniet diamlorem vel! Exercitation, varius fugiat
+                                tempora, occaecati corporis expedita qui harum cupidatat iste turpis, irure sociis.
+                                Aute eos cubilia conubia fuga, officia commodi interdum! Anim aenean recusandae!
+                                Atque optio dolorem. Malesuada cumque? Sociosqu magnam.
+                            </textarea>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="regExpText">Enter regExp or text: </label>
+                            <input type="text" class="form-control"
+                                   id="regExpText" name="regExpText" value=".*" required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="result_find-data">Result: </label>
+                            <div id="result_find-data" class="alert alert-success" role="alert"></div>
+                        </div>
+
+                    </div>
+                </form>
+                <button type="button" class="btn btn-outline-primary" onclick="findData();">Primary</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="assets/js/main.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</html>
