@@ -14,3 +14,12 @@ span {
     margin-top: 60px;
 }
 
+.wrapper{
+    margin: auto;
+    max-width: 540px;
+}
+.row {
+    margin: 20px auto;
+    border: 2px solid green;
+    padding: 10px;
+}

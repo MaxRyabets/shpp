@@ -74,6 +74,7 @@ function fillTableData() {
     fillTableDataPrice();
 }
 
+/*clear inside tags in tbody*/
 function removeElements(){
     while (invoice.firstChild) {
         invoice.removeChild(invoice.firstChild);
@@ -91,10 +92,10 @@ function changeArrow(checkSort) {
 }
 
 function sortCategory(checkSort){
-
     return GOODS.sort(function(a,b) {
         let firstCategory = a.category;
         let secondCategory = b.category;
+
         if(checkSort)
         {
             return firstCategory > secondCategory ? -1 : firstCategory < secondCategory ? 1 : 0;
@@ -107,6 +108,7 @@ function sortName(checkSort){
     return GOODS.sort(function(a,b) {
         let firstName = a.name;
         let secondName = b.name;
+
         if(checkSort)
         {
             return firstName > secondName ? -1 : firstName < secondName ? 1 : 0;
@@ -119,12 +121,12 @@ function sortData(){
     let checkSortCategory = document.getElementById('sort_category');
     let checkSortName = document.getElementById('sort_name');
     checkSortCategory.addEventListener('click', function(event) {
-        sortCategory(changeArrow(checkSortCategory) === true);
+        sortCategory(changeArrow(this) === true);
         removeElements();
         fillTableDataTbody();
     });
     checkSortName.addEventListener('click', function(event) {
-        sortName(changeArrow(checkSortName) === true);
+        sortName(changeArrow(this) === true);
         removeElements();
         fillTableDataTbody();
     });
@@ -135,18 +137,48 @@ window.onload = function () {
     sortData();
 };
 
-const filter = document.getElementById("filter");
-
+/*Filter text according to tag <option>(<select>) changes*/
 filter.onchange = function () {
     removeElements();
     price = 0;
+
     for (let countTagTr = 0; countTagTr < GOODS.length; countTagTr++) {
-        if (filter.options[filter.selectedIndex].text.toLowerCase() === GOODS[countTagTr]['category']){
+        //Expect that search on an immutable field category
+        if (this.options[this.selectedIndex].text.toLowerCase() === GOODS[countTagTr]['category']){
             addDataToTable(countTagTr);
         }
     }
-    if(filter.options[filter.selectedIndex].text === 'Filter by category'){
+    if(this.options[this.selectedIndex].text === 'Filter by category'){
         fillTableDataTbody();
     }
     fillTableDataPrice();
+};
+
+/*Looking for data by word fragments or words
+* search - input id
+* */
+search.oninput = function () {
+    price = 0;
+    removeElements();
+
+    for (let countTagTr = 0; countTagTr < GOODS.length; countTagTr++) {
+        //if there is no text, we display all the data
+        if (this.value !== "") {
+            //looking for data coinciding with the text you're looking for
+            for (const key in GOODS[countTagTr]) {
+                let tempWord = "";
+                //looking for a text that matches in the fields
+                for (let i = 0; i < GOODS[countTagTr][key].length; i++) {
+                    tempWord += GOODS[countTagTr][key][i];
+                    /*if there is a match for the text*/
+                    if (this.value.toLowerCase() === tempWord) {
+                        addDataToTable(countTagTr);
+                        fillTableDataPrice();
+                    }
+                }
+            }
+        } else {
+            addDataToTable(countTagTr);
+        }
+    }
 };

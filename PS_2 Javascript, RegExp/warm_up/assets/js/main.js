@@ -9,6 +9,9 @@ const NUMBER_COLONS = 2;
 const MAX_COL = 18;
 const MAX_ROW = 18;
 
+const MARGIN_ELEMENT_CHESSBOARD = 10;
+const SIZE_ELEMENT_CHESSBOARD = 50;
+
 /*count the sum of numbers between user entered*/
 function sum() {
     if (document.getElementById("first_number").value !== '' ||
@@ -141,13 +144,15 @@ function drawChessboard() {
         if(col.match(regExpNumber) && row.match(regExpNumber)){
             col = +col;
             row = +row;
-            if(col > MAX_COL || row > MAX_ROW) {
+            if(col < MAX_COL && row < MAX_ROW) {
                 /*countColumn * margin (10) + widthSpan (50) * countColumn, row too */
-                const width = col * 10 + 50 * col, height = row * 10 + 50 * row;
+                const width = col * MARGIN_ELEMENT_CHESSBOARD + SIZE_ELEMENT_CHESSBOARD * col,
+                    height = row * MARGIN_ELEMENT_CHESSBOARD + SIZE_ELEMENT_CHESSBOARD * row;
                 let chessBoard = document.createElement("div");
 
                 chessBoard.setAttribute("id", "chessBoard");
-                chessBoard.style.cssText = `width: ${width}px; height: ${height}px;`;
+                chessBoard.style.cssText = `width: ${width}px;`;
+                document.getElementById("row-chessboard").style.cssText = `width: ${width + 50}px;`;
                 document.getElementById("result_chessboard").appendChild(chessBoard);
 
                 for (let i = 0; i < row; i++) {
@@ -163,17 +168,17 @@ function drawChessboard() {
                             span = document.createElement("span");
                             span.style.cssText = 'display:inline-block; background:#00BCD4; margin: 5px;';
                         }
-                        document.getElementById("chessBoard").appendChild(span);
+                        document.getElementById("result_chessboard").appendChild(span);
                     }
                 }
             } else{
-                document.getElementById("chessBoard").innerHTML = "Please enter checkerboard size < 18";
+                document.getElementById("result_chessboard").innerHTML = "Please enter checkerboard size < 18";
             }
         } else {
-            document.getElementById("chessBoard").innerHTML = "Please enter a number";
+            document.getElementById("result_chessboard").innerHTML = "Please enter a number";
         }
     } else {
-        document.getElementById("chessBoard").innerHTML = "Please enter chessboard size!";
+        document.getElementById("result_chessboard").innerHTML = "Please enter chessboard size!";
     }
 }
 
@@ -222,10 +227,6 @@ function findIpLinks() {
     } else {
         document.getElementById("ipLinks").innerHTML = "Please enter a links and a ip(s)";
     }
-}
-
-function isRegExp(regExpText){
-    return regExpText.match(/^[/].+[/g]|[/m]|[/s]|[/u]/g) !== "";
 }
 
 function findData(){
