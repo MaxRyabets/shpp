@@ -2,24 +2,22 @@ button {
     width: 100%;
 }
 
-span {
-    width: 50px;
-    height: 50px;
-}
-
 #result_chessboard {
     text-align: center;
 }
 #drawChessboard {
     margin-top: 60px;
 }
-
+span {
+    margin: 5px;
+}
 .wrapper{
     margin: auto;
-    max-width: 540px;
+    max-width: 640px;
 }
 .row {
     margin: 20px auto;
     border: 2px solid green;
     padding: 10px;
 }
+

@@ -35,8 +35,8 @@
                             <div id="result_sum" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-outline-primary" id="sum">Primary</button>
                 </form>
-                <button type="button" class="btn btn-outline-primary" onclick="sum();" id="sum">Primary</button>
             </div>
         </div>
         <div class="row">
@@ -63,8 +63,8 @@
                             <div id="result_time" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-outline-primary" id="time">Primary</button>
                 </form>
-                <button type="button" class="btn btn-outline-primary" onclick="time();" id="time">Primary</button>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="firstDate">Enter first date: </label>
                             <input type="datetime-local" class="form-control"
-                                   id="firstDate" name="seconds" value="2019-02-01T19:24:23" required>
+                                   id="firstDate" name="seconds" value="2019-02-01T19:34:23" required>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
@@ -92,8 +92,8 @@
                             <div id="result_date-time" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-outline-primary" id="calcDate">Primary</button>
                 </form>
-                <button type="button" class="btn btn-outline-primary" onclick="calcDateTime();" id="calcDate">Primary</button>
             </div>
         </div>
 
@@ -103,14 +103,14 @@
                     <div class="form-row">
 
                         <div class="col-md-6 mb-3">
-                            <label for="col">Enter first date: </label>
+                            <label for="col">Enter width chessboard: </label>
                             <input type="number" class="form-control"
                                    id="col" name="col" value="8" required>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="row">Enter second date </label>
+                            <label for="row">Enter height chessboard: </label>
                             <input type="number" class="form-control"
                                    id="row" name="row" value="8" required>
                             <div class="valid-feedback">Valid.</div>
@@ -121,8 +121,9 @@
                             <div id="result_chessboard" role="alert"></div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-outline-primary" id="drawChessboard">Primary</button>
                 </form>
-                <button type="button" class="btn btn-outline-primary" onclick="drawChessboard();" id="drawChessboard">Primary</button>
+
             </div>
         </div>
 
@@ -135,11 +136,10 @@
                         <div class="col-md-6 mb-3">
                             <label for="ipLinks">Enter links or ip: </label>
                             <textarea class="form-control"
-                                      id="ipLinks" name="ipLinks" rows="5" cols="5" maxlength="200" required>
-                                https://stackoverflow.com/,195.62.15.242,
-                                https://www.evernote.com/shard/s496/client/snv?,
+                                      id="ipLinks" name="ipLinks" rows="5" cols="5" maxlength="400" required>
+                                https://stackoverflow.com/,195.62.15.242, https://www.evernote.com/shard/s496/client/snv?,
                                 ferferfee rgege ttttt eewewq, 3453rf z/.,/, ,j,kyui, `12wec.er gfreg@mei.rt,
-                                http://195.230.140.114
+                                http://195.230.140.114, http://[2001:db8:85a3:8d3:1319:8a2e:370:7348]
                             </textarea>
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 </form>
-                <button type="button" class="btn btn-outline-primary" onclick="findIpLinks();">Primary</button>
+                <button type="button" class="btn btn-outline-primary" id="findIpLinks">Primary</button>
             </div>
         </div>
 
@@ -189,8 +189,8 @@
                         </div>
 
                     </div>
+                    <button type="button" class="btn btn-outline-primary" id="findData">Primary</button>
                 </form>
-                <button type="button" class="btn btn-outline-primary" onclick="findData();">Primary</button>
             </div>
         </div>
     </div>

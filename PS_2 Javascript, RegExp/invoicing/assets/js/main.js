@@ -40,26 +40,48 @@ const GOODS = [
 const invoice = document.getElementById("invoice");
 const totalPrice = document.getElementById("total-price");
 let price = 0;
+let filterGOODS = [];
 fillTableData();
 
 function addDataToTable(countTagTr){
+
     let tr = document.createElement("tr");
     for(const key in GOODS[countTagTr]){
         let td = document.createElement("td");
         td.textContent = GOODS[countTagTr][key];
         tr.appendChild(td);
+
         if (key === 'price'){
-            price +=  GOODS[countTagTr][key];
+            price +=  GOODS[countTagTr][key] * GOODS[countTagTr]['amount'] ;
         }
     }
     invoice.appendChild(tr);
 }
 
+function addFilterDataToTable(countTagTr){
+
+    let tr = document.createElement("tr");
+    for(const key in filterGOODS[countTagTr]){
+        let td = document.createElement("td");
+        td.textContent = filterGOODS[countTagTr][key];
+        tr.appendChild(td);
+        if (key === 'price'){
+            price +=  filterGOODS[countTagTr][key] * filterGOODS[countTagTr]['amount'] ;
+        }
+    }
+    invoice.appendChild(tr);
+}
 
 /*tbody tag data filling*/
 function fillTableDataTbody() {
-    for (let countTagTr = 0; countTagTr < GOODS.length; countTagTr++) {
-        addDataToTable(countTagTr);
+    if(filterGOODS.length !== 0){
+        for (let countTagTr = 0; countTagTr < filterGOODS.length; countTagTr++) {
+            addFilterDataToTable(countTagTr);
+        }
+    }else {
+        for (let countTagTr = 0; countTagTr < GOODS.length; countTagTr++) {
+            addDataToTable(countTagTr);
+        }
     }
 }
 
@@ -105,10 +127,10 @@ function sortCategory(checkSort){
 }
 
 function sortName(checkSort){
-    return GOODS.sort(function(a,b) {
+    let tmgGOODS = filterGOODS.length !== 0 ? filterGOODS : GOODS;
+    return tmgGOODS.sort(function(a,b) {
         let firstName = a.name;
         let secondName = b.name;
-
         if(checkSort)
         {
             return firstName > secondName ? -1 : firstName < secondName ? 1 : 0;
@@ -141,11 +163,12 @@ window.onload = function () {
 filter.onchange = function () {
     removeElements();
     price = 0;
-
+    filterGOODS = [];
     for (let countTagTr = 0; countTagTr < GOODS.length; countTagTr++) {
         //Expect that search on an immutable field category
         if (this.options[this.selectedIndex].text.toLowerCase() === GOODS[countTagTr]['category']){
             addDataToTable(countTagTr);
+            filterGOODS.push(GOODS[countTagTr]);
         }
     }
     if(this.options[this.selectedIndex].text === 'Filter by category'){
@@ -160,7 +183,6 @@ filter.onchange = function () {
 search.oninput = function () {
     price = 0;
     removeElements();
-
     for (let countTagTr = 0; countTagTr < GOODS.length; countTagTr++) {
         //if there is no text, we display all the data
         if (this.value !== "") {
@@ -169,7 +191,7 @@ search.oninput = function () {
                 let tempWord = "";
                 //looking for a text that matches in the fields
                 for (let i = 0; i < GOODS[countTagTr][key].length; i++) {
-                    tempWord += GOODS[countTagTr][key][i];
+                    tempWord += GOODS[countTagTr][key][i].toLowerCase();
                     /*if there is a match for the text*/
                     if (this.value.toLowerCase() === tempWord) {
                         addDataToTable(countTagTr);
