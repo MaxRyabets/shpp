@@ -12,7 +12,6 @@ const MINUTES_IN_HOUR = 60;
 const WIDTH_ROWS = 600;
 
 const MARGIN_ELEMENT_CHESSBOARD = 10;
-const SIZE_ELEMENT_CHESSBOARD = 50;
 
 /*count the sum of numbers between user entered*/
 document.getElementById("sum").addEventListener('click', () => {
@@ -56,10 +55,8 @@ function parseTime(timeToSeconds) {
 }
 
 document.getElementById("time").addEventListener('click', () => {
-    if(document.getElementById("seconds").value !== "" &&
-        document.getElementById("timeToSeconds").value === "") {
+    if(document.getElementById("seconds").value !== "") {
         const seconds = +document.getElementById("seconds").value;
-
         if (Number.isNaN(seconds)) {
             document.getElementById("result_time").innerHTML = "Not a number";
             return;
@@ -71,23 +68,22 @@ document.getElementById("time").addEventListener('click', () => {
         //number of 10 - add 0 if format number equals 0..9
         document.getElementById("result_time").innerHTML =
             `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
-        document.getElementById("timeToSeconds").value = "";
 
-    }else if(document.getElementById("timeToSeconds").value !== ""){
+    }
+    if(document.getElementById("timeToSeconds").value !== ""){
         const timeToSeconds = document.getElementById("timeToSeconds").value;
         if(!isTimeFormat(timeToSeconds)){
-            document.getElementById("result_time").innerHTML = "format time is Not a Number!";
+            document.getElementById("result_time_seconds").innerHTML = "format time is Not a Number!";
             return;
         }
         const arrTime = parseTime(timeToSeconds);
         if(arrTime.length !== 3) {
-            document.getElementById("result_time").innerHTML = "Please enter a format time hh:mm:ss!";
+            document.getElementById("result_time_seconds").innerHTML = "Please enter a format time hh:mm:ss!";
             return;
         }
         //arrTime[0] is hours, arrTime[1] is minutes, arrTime[2] is seconds
-        document.getElementById("result_time").innerHTML =
+        document.getElementById("result_time_seconds").innerHTML =
             arrTime[0] * MINUTES_IN_HOUR + arrTime[1] * SECONDS_IN_MINUTES + arrTime[2];
-        document.getElementById("seconds").value = "";
     }else{
         document.getElementById("result_time").innerHTML = "Please enter a seconds or a time";
     }
@@ -229,6 +225,7 @@ function parseResultData(result){
 /*Display tags <a>*/
 document.getElementById("findIpLinks").addEventListener('click', () =>{
     if(document.getElementById("ipLinks").value !== "") {
+        document.getElementById("result_ipLinks").textContent = "";
         const data = document.getElementById("ipLinks").value;
         const regExpData = data.match(/(http|https):\/\/(\[)?(\.)?(([\w+.~@#:$%^?&*-\/\]])+[^\w\d\r?\n\s])/g);
         let result = convertToArrayData(findComma(regExpData));

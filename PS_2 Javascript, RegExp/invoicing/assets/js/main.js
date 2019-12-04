@@ -180,6 +180,7 @@ filter.onchange = function () {
 /*Looking for data by word fragments or words
 * search - input id
 * */
+
 search.oninput = function () {
     price = 0;
     removeElements();
@@ -195,7 +196,6 @@ search.oninput = function () {
                     /*if there is a match for the text*/
                     if (this.value.toLowerCase() === tempWord) {
                         addDataToTable(countTagTr);
-                        fillTableDataPrice();
                     }
                 }
             }
@@ -203,4 +203,5 @@ search.oninput = function () {
             addDataToTable(countTagTr);
         }
     }
+    fillTableDataPrice();
 };
