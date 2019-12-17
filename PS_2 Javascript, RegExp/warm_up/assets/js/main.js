@@ -15,8 +15,8 @@ const MARGIN_ELEMENT_CHESSBOARD = 10;
 
 /*count the sum of numbers between user entered*/
 document.getElementById("sum").addEventListener('click', () => {
-    if (document.getElementById("first_number").value === "" ||
-        document.getElementById("second_number").value === "") {
+    if (!document.getElementById("first_number").value ||
+        !document.getElementById("second_number").value) {
         document.getElementById("result_sum").innerHTML = "First or second number is empty!";
         return;
     }
@@ -62,9 +62,9 @@ document.getElementById("time").addEventListener('click', () => {
             return;
         }
 
-        let h = Math.round(seconds / SECONDS_IN_HOUR),
-            m = Math.round(seconds % SECONDS_IN_HOUR / SECONDS_IN_MINUTES),
-            s = Math.round(seconds % SECONDS_IN_MINUTES);
+        let h = Math.ceil(seconds / SECONDS_IN_HOUR),
+            m = Math.ceil(seconds % SECONDS_IN_HOUR / SECONDS_IN_MINUTES),
+            s = Math.ceil(seconds % SECONDS_IN_MINUTES);
         //number of 10 - add 0 if format number equals 0..9
         document.getElementById("result_time").innerHTML =
             `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
@@ -89,8 +89,8 @@ document.getElementById("time").addEventListener('click', () => {
     }
 });
 document.getElementById("calcDate").addEventListener('click', () =>{
-    if( document.getElementById("firstDate").value === "" ||
-        document.getElementById("secondDate").value === ""){
+    if( !document.getElementById("firstDate").value ||
+        !document.getElementById("secondDate").value ){
         document.getElementById("result_date-time").innerHTML = "Please enter a format data!";
         return;
     }
@@ -106,7 +106,7 @@ document.getElementById("calcDate").addEventListener('click', () =>{
     let startDate = new Date(firstDate);
     let endDate = new Date(secondDate);
     if (startDate > endDate){
-        endDate = [startDate, startDate = endDate][0];
+        [startDate, endDate] = [endDate, startDate];
     }
     let days = endDate.getDate() - startDate.getDate();
     let minutes = endDate.getMinutes() - startDate.getMinutes();
@@ -114,10 +114,10 @@ document.getElementById("calcDate").addEventListener('click', () =>{
     let month = endDate.getMonth() - startDate.getMonth();
     let years = endDate.getFullYear() - startDate.getFullYear();
     let seconds = endDate.getSeconds() - startDate.getSeconds();
-
+    console.log(Math.abs(month));
     let diff = {
         years: month < 0 ? years - 1 : years,
-        months: days < 0 ? MONTHS_IN_YEARS - Math.abs(month) - 1 : month,
+        months: days < 0 ? Math.abs(MONTHS_IN_YEARS - month) - 1 : Math.abs(month),
         days:  days === 0 ? days : month === 0  && years === 0 ? days : DAYS_IN_MONTH - Math.abs(days),
         hours: minutes < 0 ?  month === 0  && years === 0 && days === 0 ?
             hours : HOURS_IN_DAY - Math.abs(hours) - 1 : hours,
@@ -135,8 +135,8 @@ document.getElementById("calcDate").addEventListener('click', () =>{
 });
 
 document.getElementById("drawChessboard").addEventListener('click', () =>{
-    if(document.getElementById("col").value === "" ||
-        document.getElementById("row").value === "") {
+    if(!document.getElementById("col").value  ||
+        !document.getElementById("row").value) {
         document.getElementById("result_chessboard").innerHTML = "Please enter chessboard size!";
         return;
     }

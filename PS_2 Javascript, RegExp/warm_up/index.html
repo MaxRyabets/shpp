@@ -10,134 +10,106 @@
 <body>
     <div class="wrapper">
         <div class="row">
-            <div class="col">
-                <form action="index.html" class="was-validated">
+            <div class="col-md-9">
+                <form action="index.html">
                     <div class="form-row">
-
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="first_number">First number: </label>
                             <input type="number" class="form-control"
                                    id="first_number" name="first_number" value="0" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
-
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="second_number">Second number: </label>
                             <input type="number" class="form-control"
                                    id="second_number" name="second_number" value="100" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label for="result_sum">Result: </label>
-                            <div id="result_sum" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-primary" id="sum">Primary</button>
+                    <button type="button" class="btn btn-outline-primary" id="sum">Calculate</button>
                 </form>
+            </div>
+            <div class="col mb-3">
+                <h6>Result:</h6>
+                <div id="result_sum"></div>
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <form action="index.html" class="was-validated">
+            <div class="col-md-6">
+                <form action="index.html">
                     <div class="form-row">
-
                         <div class="col-md-6 mb-3">
                             <label for="seconds">Enter number of the seconds: </label>
                             <input type="number" class="form-control"
-                                   id="seconds" name="seconds" value="" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
+                                   id="seconds" name="seconds" value="1" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="timeToSeconds">Enter time hh:mm:ss </label>
                             <input type="text" class="form-control"
                                    id="timeToSeconds" name="fullTime" value="20:13:13" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="result_time">Result: </label>
-                            <div id="result_time" class="alert alert-success" role="alert"></div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="result_time_seconds">Result: </label>
-                            <div id="result_time_seconds" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-primary" id="time">Primary</button>
+                    <button type="button" class="btn btn-outline-primary" id="time">Calculate</button>
                 </form>
             </div>
+            <div class="col mb-3">
+                <h6>Result seconds to time:</h6>
+                <div id="result_time"></div>
+            </div>
+            <div class="col mb-3">
+                <h6>Result time to seconds:</h6>
+                <div id="result_time_seconds"></div>
+            </div>
         </div>
-
         <div class="row">
-            <div class="col">
-                <form action="index.html" class="was-validated">
+            <div class="col-md-11 mb-2">
+                <form action="index.html">
                     <div class="form-row">
-
                         <div class="col-md-6 mb-3">
                             <label for="firstDate">Enter first date: </label>
                             <input type="datetime-local" class="form-control"
                                    id="firstDate" name="seconds" value="2019-02-01T19:34:23" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="secondDate">Enter second date </label>
                             <input type="datetime-local" class="form-control"
                                    id="secondDate" name="fullTime" value="2020-03-01T10:24:23" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="result_date-time">Result: </label>
-                            <div id="result_date-time" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-primary" id="calcDate">Primary</button>
+                    <button type="button" class="btn btn-outline-primary" id="calcDate">Calculate</button>
                 </form>
             </div>
+            <div class="col mb-3">
+                <h6>Result:</h6>
+                <div id="result_date-time"></div>
+            </div>
         </div>
-
         <div class="row" id="row-chessboard">
-            <div class="col">
-                <form action="index.html" class="was-validated">
+            <div class="col-md-11 mb-2">
+                <form action="index.html">
                     <div class="form-row">
-
                         <div class="col-md-6 mb-3">
                             <label for="col">Enter width chessboard: </label>
                             <input type="number" class="form-control"
                                    id="col" name="col" value="8" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="row">Enter height chessboard: </label>
                             <input type="number" class="form-control"
                                    id="row" name="row" value="8" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div>
-                            <label for="result_date-time">Result: </label>
-                            <div id="result_chessboard" role="alert"></div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-primary" id="drawChessboard">Primary</button>
+                    <button type="button" class="btn btn-outline-primary" id="drawChessboard">Calculate</button>
                 </form>
-
+            </div>
+            <div class="col mb-3">
+                <h6>Result:</h6>
+                <div id="result_chessboard"></div>
             </div>
         </div>
-
-
         <div class="row">
-            <div class="col">
-                <form action="index.html" class="was-validated">
+            <div class="col-md-11 mb-2">
+                <form action="index.html">
                     <div class="form-row">
-
-                        <div class="col-md-6 mb-3">
+                        <div class="col mb-3">
                             <label for="ipLinks">Enter links or ip: </label>
                             <textarea class="form-control"
                                       id="ipLinks" name="ipLinks" rows="5" cols="5" maxlength="400" required>
@@ -145,28 +117,24 @@
                                 ferferfee rgege ttttt eewewq, 3453rf z/.,/, ,j,kyui, `12wec.er gfreg@mei.rt,
                                 http://195.230.140.114, http://[2001:db8:85a3:8d3:1319:8a2e:370:7348]
                             </textarea>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="result_ipLinks">Result: </label>
-                            <div id="result_ipLinks" class="alert alert-success" role="alert"></div>
                         </div>
                     </div>
                 </form>
-                <button type="button" class="btn btn-outline-primary" id="findIpLinks">Primary</button>
+                <button type="button" class="btn btn-outline-primary" id="findIpLinks">Calculate</button>
+            </div>
+            <div class="col mb-3">
+                <h6>Result:</h6>
+                <div id="result_ipLinks"></div>
             </div>
         </div>
-
         <div class="row">
-            <div class="col">
-                <form action="index.html" class="was-validated">
+            <div class="col-md-11 mb-2">
+                <form action="index.html">
                     <div class="form-row">
-
-                        <div class="col-md-6 mb-3">
+                        <div class="col mb-3">
                             <label for="data-text">Enter text : </label>
                             <textarea class="form-control"
-                                      id="data-text" name="data-text" rows="5" cols="5" maxlength="100" required>
+                                      id="data-text" name="data-text" rows="5" cols="5" required>
                                 Distinctio viverra. Omnis culpa pariatur nunc facere proident! Accusamus proin?
                                 Donec maecenas dolores auctor minim. Quisque! Conubia recusandae totam nobis!
                                 Ut dis justo, alias blanditiis ullam mollis, viverra! Parturient, temporibus?
@@ -175,34 +143,26 @@
                                 Aute eos cubilia conubia fuga, officia commodi interdum! Anim aenean recusandae!
                                 Atque optio dolorem. Malesuada cumque? Sociosqu magnam.
                             </textarea>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
-
                         <div class="col-md-6 mb-3">
                             <label for="regExpText">Enter regExp or text: </label>
                             <input type="text" class="form-control"
                                    id="regExpText" name="regExpText" value=".*" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
-
-                        <div class="col-md-6 mb-3">
-                            <label for="result_find-data">Result: </label>
-                            <div id="result_find-data" class="alert alert-success" role="alert"></div>
-                        </div>
-
                     </div>
-                    <button type="button" class="btn btn-outline-primary" id="findData">Primary</button>
+                    <button type="button" class="btn btn-outline-primary" id="findData">Calculate</button>
                 </form>
+            </div>
+            <div class="col mb-3">
+                <h6>Result:</h6>
+                <div id="result_find-data"></div>
             </div>
         </div>
     </div>
-
 </body>
 <script src="assets/js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
 </html>
