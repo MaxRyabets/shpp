@@ -44,13 +44,11 @@ let tmpData = GOODS;
 fillTableData();
 
 function addDataToTable(countTagTr){
-
     let tr = document.createElement("tr");
     for(const key in GOODS[countTagTr]){
         let td = document.createElement("td");
         td.textContent = GOODS[countTagTr][key];
         tr.appendChild(td);
-
         if (key === 'price'){
             price +=  GOODS[countTagTr][key] * GOODS[countTagTr]['amount'] ;
         }
@@ -59,7 +57,6 @@ function addDataToTable(countTagTr){
 }
 
 function addTmpDataToTable(countTagTr){
-
     let tr = document.createElement("tr");
     for(const key in tmpData[countTagTr]){
         let td = document.createElement("td");
@@ -159,6 +156,13 @@ window.onload = function () {
     sortData();
 };
 
+function tmpFilter(value){
+    tmpData = tmpData.filter(word => word.category === value);
+    for (let i = 0; i < tmpData.length; i++) {
+        addTmpDataToTable(i);
+    }
+}
+
 /*Filter text according to tag <option>(<select>) changes*/
 filter.onchange = function () {
     clearData();
@@ -169,10 +173,10 @@ filter.onchange = function () {
         tmpData = GOODS;
     }
     else if(tmpData.length !== 0){
-        tmpData = tmpData.filter(word => word.category === this.value);
-        for (let i = 0; i < tmpData.length; i++) {
-            addTmpDataToTable(i);
-        }
+        tmpFilter(this.value);
+    }else{
+        tmpData = GOODS;
+        tmpFilter(this.value);
     }
     fillTableDataPrice();
 };
@@ -180,23 +184,24 @@ filter.onchange = function () {
 function searchData(data, value){
     let dataOfSearch = [];
     for (let countTagTr = 0; countTagTr < data.length; countTagTr++) {
-        //if there is no text, we display all the data
-        if (value) {
-            //looking for data coinciding with the text you're looking for
-            let tempWord = "";
-            //looking for a text that matches in the fields
-            for (let i = 0; i < data[countTagTr]['name'].length; i++) {
-                tempWord += data[countTagTr]['name'][i].toLowerCase();
-                /*if there is a match for the text*/
-                if (value.toLowerCase() === tempWord) {
-                    dataOfSearch.push(data[countTagTr]);
-                }
+        //looking for data coinciding with the text you're looking for
+        let tempWord = "";
+        //looking for a text that matches in the fields
+        for (let i = 0; i < data[countTagTr]['name'].length; i++) {
+            tempWord += data[countTagTr]['name'][i].toLowerCase();
+            /*if there is a match for the text*/
+            if (value.toLowerCase() === tempWord) {
+                dataOfSearch.push(data[countTagTr]);
             }
-        } else {
-            addDataToTable(countTagTr);
         }
     }
-    tmpData =  dataOfSearch;
+
+    if (dataOfSearch.length !== 0){
+        tmpData = dataOfSearch;
+        fillTableDataTbody();
+        fillTableDataPrice();
+    }
+
 }
 
 /*Looking for data by word fragments or words
@@ -204,15 +209,16 @@ function searchData(data, value){
 * */
 
 search.oninput = function () {
-    price = 0;
-    removeElements();
+    clearData();
     if(tmpData.length !== 0 && this.value){
         searchData(tmpData, this.value);
     }
     else if (this.value !== "" && tmpData.length === 0) {
         searchData(GOODS, this.value);
+    }else{
+        tmpData = [];
+        fillTableDataTbody();
     }
-    fillTableDataTbody();
     fillTableDataPrice();
 };
 

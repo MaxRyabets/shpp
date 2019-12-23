@@ -61,13 +61,20 @@ document.getElementById("time").addEventListener('click', () => {
             document.getElementById("result_time").innerHTML = "Not a number";
             return;
         }
+        let h = 0, m = 0, s = 0;
 
-        let h = Math.ceil(seconds / SECONDS_IN_HOUR),
+        //number of 10 - add 0 if format number equals 0..9
+        if(seconds < SECONDS_IN_MINUTES){
+            document.getElementById("result_time").innerHTML =
+                `${h+"0"}:${m+"0"}:${"0"+seconds}`;
+        }else {
+            h = Math.ceil(seconds / SECONDS_IN_HOUR),
             m = Math.ceil(seconds % SECONDS_IN_HOUR / SECONDS_IN_MINUTES),
             s = Math.ceil(seconds % SECONDS_IN_MINUTES);
-        //number of 10 - add 0 if format number equals 0..9
-        document.getElementById("result_time").innerHTML =
-            `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
+            document.getElementById("result_time").innerHTML =
+                `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
+        }
+
 
     }
     if(document.getElementById("timeToSeconds").value !== ""){
@@ -83,7 +90,7 @@ document.getElementById("time").addEventListener('click', () => {
         }
         //arrTime[0] is hours, arrTime[1] is minutes, arrTime[2] is seconds
         document.getElementById("result_time_seconds").innerHTML =
-            arrTime[0] * MINUTES_IN_HOUR + arrTime[1] * SECONDS_IN_MINUTES + arrTime[2];
+            arrTime[0] * SECONDS_IN_HOUR + arrTime[1] * MINUTES_IN_HOUR + arrTime[2];
     }else{
         document.getElementById("result_time").innerHTML = "Please enter a seconds or a time";
     }
